@@ -1,1 +1,419 @@
+1.Any year is entered through the keyboard, write a program to determine whether the year is leap or not. Use the logical operators && and ||.
+TESTCASES:
+case=t1
+input=2014
+output=2014 is not a leap year
+
+case=t2
+Fail message="some test cases didnt match"
+input=1900
+output=1900 is not a leap year
+
+PROGRAM:
+#include<stdio.h>  
+  
+int main()  
+{  
+    int year;  
+    scanf("%d", &year);  
+  
+    if( (year%100 == 0 && year%400 == 0) ||  
+        (year%100 != 0 && year%4   == 0)   )  
+    {  
+        printf("%d is a leap year", year);  
+    }  
+    else  
+    {  
+       printf("%d is not a leap year", year);  
+    }  
+  
+    return 0;  
+}  
+
+2.A Utopian tree sapling with a height of 1 inch is planted on day1. The tree grows 2 inches every day. 
+Find the height of the tree in centimeters on nth day. (HINT: 1 inch= 2.54 centimeters)
+TESTCASES:
+case=t1
+input=5
+output= The height of the tree on 5th day = 22.86 cms
+
+case=t2
+Input = 6
+Output= The height of the tree on 6th day = 27.94 cms
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int d;
+    float ht;
+    scanf("%d",&d);
+    ht=2*d-1;
+    printf("The height of the tree on %dth day = %.2f cms",d,ht*2.54 );
+    return 0;
+}
+
+3.Raju started learning programming and tries to solve at least one problem on his own. 
+He started solving the problem at x hrs:x1 minutes and completed it at y hrs :y1 minutes . How long did he take to solve the problem? 
+(Give your answer in minutes).
+
+TESTCASES:
+Case=t1
+input=15 10
+16 05
+output=He took 55 minutes to solve the problem.
+
+Case=t2
+input= 10 30 
+11 10
+output=He took 40 minutes to solve the problem.
+
+PROGRAM:
+#include <stdio.h>
+int main()
+{
+    int x1,x2,y1,y2;
+    scanf("%d%d",&x1,&x2);
+    scanf("%d%d",&y1,&y2);
+    int mins=60*(y1-x1)+(y2-x2);
+    printf("He took %d minutes to solve the problem.",mins);
+}
+
+4.Neha is very conscious about number of hours she spent on problem solving. If she solves one problem on first day, 
+on second day she solves one more than first day count and so on. Find the number of problems she solves on the nth day. 
+If she takes x minutes to solve each problem, find the total hours she spent on problem solving.
+TESTCASES:
+Input = 7 20            //7 is nth day and 20 is x minutes to solve each problem
+Output
+Total Problem solved=28
+Total time spent on problem solving = 9.3 hours
+
+Input = 6 10
+Output
+Total Problem solved=21
+Total time spent on problem solving = 3.5 hours
+
+Input= 12 15
+Total Problems solved= 78
+ Total time spent on problem solving = 19.5 hours
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int a,b,tp;
+    scanf("%d%d",&a,&b);
+    tp=(a*(a+1))/2;
+    float t=(tp*b)/60.0;
+    printf("Total problems solved=%d\n",tp);
+    printf("Total time spent on problem solving = %.1f hours",t);
+    return(0);
+}
+
+5.A painter wants to paint the outer surface of an oil rectangular can. The dimensions of the can are 20cm x 15cm x 12cm(l,b,h). 
+If 5 paisa is charged to paint per square centimeter, Find the cost of painting in rupees.
+
+TESTCASES:
+CASE=T1 
+Input= l=20, b=15, h=12
+Output= painting cost = 72.00 rupees
+
+CASE=T2
+Input = l=5, b=2, h=18
+Output= painting cost = 13.6 rupees
+
+CASE=T3
+l=40, b=90, h=16
+Output= painting cost = 568.00 rupees
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int l,b,h, Ar;
+    float cost;
+    scanf("%d%d%d",&l,&b,&h);
+    Ar=2*((l*b) +(b*h) + (l*h));
+    cost=(5.0*Ar)/100;
+    printf("painting cost = %.1f rupees",cost);
+}
+
+6.Krishna’s livelihood depends on selling milk. Every day he brings x gallons of milk from his dairy to Nizampet. 
+In Nizampet, he pours 1 liter of milk to each of 36 households. Find the number of liters of milk left with him?
+(HINT: 1 gallon = 3.785 liters). Assume that Krishna has adequate amount of milk.
+TESTCASES:
+Case =T1
+11
+Amount of milk left with him = 5.635 liters
+
+Case= T2
+10	
+Amount of milk left with him = 1.85 liters
+
+Case =T3
+12	
+Amount of milk left with him = 9.42 liters
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int m;
+    scanf("%d",&m);
+    float lft=m*3.785 - 36;
+    printf("Amount of milk left with him = %0.2f liters",lft);
+    return(0);
+}
+
+7.Manisha works in a supermarket in billing. A customer bought few pens and some chocolates.Each pen costs Rs. 1.5 and each chocolate costs Rs. 10.
+Help Manisha to calculate the total bill amount and remaining change to be returned if the customer pays Rs. 100.
+
+Input format: read no of pens purchased followed by number of chocolates purchased.
+output condition: Remove any trailing decimal zeros in the output.
+for example 65.0 should be truncated to 65 and 65.5 should be kept as it is.
+TESTCASES:
+case=t1
+input=10 5
+output=Total bill= Rs.65
+Remaining change to be returned= Rs.35
+
+case=t2
+input =20  6
+output=Total bill= Rs.90
+Remaining change to be returned= Rs.10
+
+case=t3
+input= 15 4
+Output=Total bill= Rs.62.5
+Remaining change to be returned= Rs.37.5
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int cp,cc;
+    float bill,change;
+    scanf("%d%d",&cp,&cc);
+    bill=(cp*1.5)+(cc*10);
+    change=100-bill;
+    printf("Total bill= Rs.%g\n",bill);
+    printf("Remaining change to be returned= Rs.%g",change);
+}
+
+8. The solubility of sugar in 1 litre of water at X degree temperature  is A grams. For unit rise in temperature, the solubility of sugar in water 
+increases by B grams.We can increase the temperature to at most 100 degrees. Find the maximum amount of sugar in grams that can be dissolved in 1 litre of water.
+TESTCASES:
+case=t1
+input=35 120 2
+output= "Amount of sugar that dissolves in 1 litre of water = 250 grams"
+
+case=t2
+input=40 120  1
+output="Amount of sugar that dissolves in 1 litre of water = 180 grams"
+
+case=t3
+input=40 115  3
+output="Amount of sugar that dissolves in 1 litre of water = 295 grams"
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int a,x,b;
+    scanf("%d%d%d",&a,&x,&b);
+    int amt=(100-a)*b;
+    printf("Amount of sugar that dissolves in 1 litre of water = %d grams",amt+x);
+}
+
+9.From the top of a tower, an Indian army soldier sees his enemy on the ground at an angle of depression of θº in radians. 
+If the tower is h feet in height, how far is the enemy from the base of the tower.
+
+Hint: •	Convert angle to degrees in order to use inbuilt tan function available in math.h
+•	tan (𝜃) = (ℎ𝑒𝑖𝑔ℎ𝑡/𝑑𝑖𝑠𝑡𝑎𝑛𝑐𝑒)
+TESTCASES:
+case=t1
+input=40 45
+output= The enemy is at a distance of 53.6 feet.
+
+case=t2
+input=60 30
+output= The enemy is at a distance of 17.3 feet.
+
+PROGRAM:
+#include<stdio.h>  
+#include<math.h>    
+int main()  
+{  
+    
+    float angle, ht, dis,t;  
+  
+    //printf("Enter angle in Degree\n");  
+    scanf("%f%f", &angle,&ht); 
+    t=tan(angle*3.142/180);
+    dis = ht/t;
+    printf("The enemy is at a distance of %.1f feet.",dis);  
+    return(0);
+}  
+
+10.Add Two Numbers Without Using the Arithmetic operators
+TESTCASES:
+case=t1
+input=4
+5
+output=9
+case=t2
+input=8
+5
+output=13
+PROGRAM:
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+       
+  int x, y;
+  scanf("%d %d",&x,&y);
+  printf("%d", x-(~y)-1);
+  return 0;
+}
+
+11.There is infinite line of black and white balls in alternate positions as shown below.
+In 1st position there is a black ball and in 2nd position there is white ball and so on...
+Given a number print the color of the ball at that position.
+TESTCASES:
+case= t1
+input=10
+output=White Ball
+
+case=t2
+input=39
+output=Black Ball
+
+case=t3
+input=17
+output=Black Ball
+
+case=t4
+input=28
+output=White Ball
+
+PROGRAM:
+#include<stdio.h>
+int main()
+{
+    int b;
+    scanf("%d",&b);
+    if(b%2==0)
+      printf("White Ball");
+    else
+      printf("Black Ball");
+return(0);          
+}
+
+12. There are two banks – Bank A and Bank B. Their interest rates vary. You have received offers from both banks in terms of the annual rate of interest, tenure, 
+and variations of the rate of interest over the entire tenure. 
+You have to choose the offer which costs you the least interest and reject the other. Do the computation and make a wise choice.
+The loan repayment happens at a monthly frequency and Equated Monthly Installment (EMI) is calculated using the formula given below:
+
+EMI = loan amount * monthly interest rate / ( 1 – 1 / (1 + monthly interest rate)^(number of years * 12))
+
+First line: P principal (Loan Amount)
+Second line: T Total Tenure (in years).
+Third Line: N1 is the number of slabs of interest rates for a given period by Bank A.
+After N1 lines we will receive N2 viz. the number of slabs offered by the second bank.
+Next N2 lines are the number of slabs of interest rates for a given period by Bank B. 
+The period and rate will be delimited by a single white space.
+Output Format: Your decision is either Bank A or Bank B.
+
+TESTCASES:
+case=t1
+50000
+10
+2
+7.5 5
+8.5 5
+3
+8.5 3
+7.5 3
+8 4
+output=
+Bank B
+
+PROGRAM:
+#include <stdio.h>
+#include <math.h>
+
+// Function to calculate EMI
+double calculateEMI(double principal, double rate, int tenure)
+{
+    double monthlyRate = rate / 1200;  // Convert annual rate to monthly rate
+    int numPayments = tenure * 12;  // Convert tenure from years to months
+
+    double emi = principal * monthlyRate / (1 - 1 / pow(1 + monthlyRate, numPayments));
+
+    return emi;
+}
+
+// Function to calculate total interest
+double calculateTotalInterest(double principal, double rate, int tenure) 
+{
+    double emi = calculateEMI(principal, rate, tenure);
+    double totalInterest = emi * (tenure * 12) - principal;
+
+    return totalInterest;
+}
+
+int main() {
+    double principal;
+    int tenure;
+    int n1, n2;
+
+    //printf("Enter the principal (loan amount): ");
+    scanf("%lf", &principal);
+
+    //printf("Enter the total tenure (in years): ");
+    scanf("%d", &tenure);
+
+   // printf("Enter the number of slabs of interest rates for Bank A: ");
+    scanf("%d", &n1);
+
+    double totalInterestA = 0.0;
+
+    for (int i = 0; i < n1; i++) {
+        double rate;
+        int period;
+
+        //printf("Enter interest rate and period for slab %d of Bank A: ", i + 1);
+        scanf("%lf %d", &rate, &period);
+
+        double interest = calculateTotalInterest(principal, rate, period);
+        totalInterestA += interest;
+    }
+
+   // printf("Enter the number of slabs of interest rates for Bank B: ");
+    scanf("%d", &n2);
+
+    double totalInterestB = 0.0;
+
+    for (int i = 0; i < n2; i++) {
+        double rate;
+        int period;
+
+       // printf("Enter interest rate and period for slab %d of Bank B: ", i + 1);
+        scanf("%lf %d", &rate, &period);
+
+        double interest = calculateTotalInterest(principal, rate, period);
+        totalInterestB += interest;
+    }
+           //  printf("%f %f",totalInterestA,totalInterestB);
+    if (totalInterestA < totalInterestB) {
+        printf("\nBank A\n");
+    } else {
+        printf("\nBank B\n");
+    }
+
+    return 0;
+}
+
+
 
