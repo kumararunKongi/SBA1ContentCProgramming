@@ -1,1 +1,43 @@
+1. If the three sides of a triangle are entered through the keyboard, write a program to check whether the 
+triangle is isosceles, equilateral, scalene or right angled triangle.
+TESTCASES:
+case=t1
+input=60 60 60
+output=
+This is an equilateral triangle
+
+case=t2
+input=75 30 75
+output=
+This is an isosceles triangle
+
+PROGRAM:
+#include <stdio.h>
+int main()  
+{  
+    int sidea, sideb, sidec; //are three sides of a triangle  
+  
+    /* 
+     * Reads all sides of a triangle 
+     */  
+    //printf("Input three sides of triangle: ");  
+    scanf("%d %d %d", &sidea, &sideb, &sidec);  
+  
+    if(sidea==sideb && sideb==sidec) //check whether all sides are equal  
+    {  
+        printf("This is an equilateral triangle.\n");  
+    }  
+    else if(sidea==sideb || sidea==sidec || sideb==sidec) //check whether two sides are equal  
+    {  
+        printf("This is an isosceles triangle.\n");  
+    }  
+    else //check whether no sides are equal  
+    {  
+        printf("This is a scalene triangle.\n");  
+    }  
+  
+    return 0;  
+} 
+
+
 
