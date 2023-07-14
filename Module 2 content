@@ -1,6 +1,7 @@
 1. If the three sides of a triangle are entered through the keyboard, write a program to check whether the 
 triangle is isosceles, equilateral, scalene or right angled triangle.
 TESTCASES:
+-----------
 case=t1
 input=60 60 60
 output=
@@ -12,6 +13,7 @@ output=
 This is an isosceles triangle
 
 PROGRAM:
+-------------
 #include <stdio.h>
 int main()  
 {  
@@ -39,5 +41,1020 @@ int main()
     return 0;  
 } 
 
+2. A cashier has currency notes of denominations 10, 50 and 100. If the amount to be withdrawn is input through 
+the keyboard in hundreds, find the total number of currency notes of each denomination the cashier will have to give to the withdrawer.
 
+TESTCASES:
+------------
+case=t1
+input= 896
+output=
+note of 100 : 8
+note of  50 : 1
+note of  10: 4
+note of remaining: 6
+
+case=t2
+input= 564
+output=
+note of 100 : 5
+note of  50 : 1
+note of  10: 1
+note of remaining: 4
+
+case=t3
+input= 320
+output=
+note of 100 : 3
+note of  50 : 0
+note of  10: 2
+note of remaining: 0
+
+PROGRAM:
+------------
+#include<stdio.h>
+int main()
+{
+ int w,x,y,z,r;
+ //printf("enter withdrow amount : ");
+ scanf("%d",&w);
+ x=w/100;
+ w=w%100;
+ y=w/50;
+ w=w%50;
+ z=w/10;
+ w=w%10;
+ r=w;
+ printf("note of 100 : %d\n",x);
+ printf("note of  50 : %d\n",y);
+ printf("note of  10: %d\n",z);
+ printf("note of remaining: %d\n",r);
+}
+
+3. If the three sides of a triangle are entered through the keyboard, write a program to check whether
+the triangle is valid or not. The triangle is valid if the sum of two sides is greater than the largest of the three sides.
+TESTCASES:
+-----------
+case=t1
+input=5
+5
+6
+output=Triangle is valid.
+
+case=t2
+input=15
+15
+22
+output=Triangle is valid.
+
+case=t2
+input=5
+10
+3
+output=Triangle is not valid.
+
+PROGRAM:
+--------------
+#include <stdio.h>
+int main()
+{
+    int a, b, c;
+    /* Input three sides of a triangle */
+    //printf("Enter three sides of triangle: \n");
+    scanf("%d%d%d", &a, &b, &c);
+    if((a + b) > c)
+    {
+        if((b + c) > a)
+        {
+            if((a + c) > b) 
+            {
+            
+                printf("Triangle is valid.");
+            }
+            else
+            {
+                printf("Triangle is not valid.");
+            }
+        }
+        else
+        {
+            printf("Triangle is not valid.");
+        }
+    }
+    else
+    {
+        printf("Triangle is not valid.");
+    }
+
+    return 0;
+}
+
+4.  Write C program to Check if two numbers in a pair are in ascending order or descending order.
+TESTCASES:
+------------
+case=t1
+input=
+10
+2
+output=
+The pair is in descending order
+
+case=t2
+input=
+2
+10
+output=
+The pair is in ascending order
+
+case=t3
+input=
+-2
+1
+output=
+The pair is in ascending order
+
+PROGRAM:
+-------------
+#include <stdio.h>
+int main()
+  {
+	int x, y, i, total = 0;
+    //printf("\nInput a pair of numbers (for example 10,2 : 2,10):");
+	//printf("\nInput first number of the pair: ");
+	scanf("%d", &x);
+    //printf("\nInput second number of the pair: ");
+	scanf("%d", &y);
+	if (x>y)
+	  {
+	  	printf("The pair is in descending order");
+	  }
+	  else
+	  {
+	printf("The pair is in ascending order");
+	  }
+	  printf("\n");
+}
+
+5. Write a C Program check whether a given number is Perfect number or not. 
+TESTCASES:
+-----------
+case=t1
+input=
+12
+output=
+"12 is not a Perfect Number"
+
+case=t2
+input=
+28
+output=
+"28 is a Perfect Number"
+
+PROGRAM:
+----------
+#include<stdio.h>
+void main()
+{
+  int n, sum=0, i=1;
+  scanf("%d",&n);
+  while(i<n)
+  {
+   if(n%i==0)
+    {
+     sum=sum+i;
+    }
+    i++;
+  }
+  if(sum==n)
+   printf("%d is a Perfect Number",n);
+  else
+   printf("%d is not a Perfect Number",n);
+}
+
+6. Write a program to calculate overtime pay of 5 employees. Overtime is paid at the rate of Rs. 12.00 per hour 
+for every hour worked above 40 hours. Assume that employees do not work for fractional part of an hour.
+If user enters more than 5 employees display "Employee limit exceeded"
+TESTCASES:
+-------
+CASE=T1
+input=32
+23
+45
+50
+41
+
+output=You have to work for more than 40 hours to get over time pay
+You have to work for more than 40 hours to get over time pay
+Employee No 3 overtime pay is 60.00
+Employee No 4 overtime pay is 120.00
+Employee No 5 overtime pay is 12.00
+
+case=t2
+input=15
+50
+45
+10
+5
+output=You have to work for more than 40 hours to get over time pay
+Employee No 2 overtime pay is 120.00
+Employee No 3 overtime pay is 60.00
+You have to work for more than 40 hours to get over time pay
+You have to work for more than 40 hours to get over time pay
+
+case=t3
+input=10
+55
+46
+72
+58
+output=
+You have to work for more than 40 hours to get over time pay
+Employee No 2 overtime pay is 180.00
+Employee No 3 overtime pay is 72.00
+Employee No 4 overtime pay is 384.00
+Employee No 5 overtime pay is 216.00
+
+PROGRAM:
+-----------
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+    int count = 1, hrs, ot;
+    float otpay;
+
+    while(count<=5)
+    {
+        
+        scanf("%d", &hrs);
+        if(hrs>40)
+        {
+            ot = hrs - 40;
+            otpay = ot * 12.00;
+            printf("Employee No %d overtime pay is %.2f\n", count, otpay);
+        }
+        else
+            printf("You have to work for more than 40 hours to get over time pay\n");
+      
+        count++;
+    }
+    
+}
+
+7.Write a program to enter numbers till the user wants. At the end it should display the count of positive, negative and zeros entered.
+TESTCASES:
+----------
+case=t1
+input=5
+2
+-3
+-9
+1
+4
+output=Positive Numbers: 3
+Negative Numbers: 2
+Number of zero: 0
+
+case=t2
+input=6
+5
+7
+10
+0
+9
+-4
+output=Positive Numbers: 4
+Negative Numbers: 1
+Number of zero: 1
+
+PROGRAM:
+---------
+#include <stdio.h>  
+  int main()  
+{  
+    int limit, num, positive = 0, negative = 0, zero = 0;  
+   // printf("Enter the limit\n");  
+    scanf("%d", &limit);  
+    //printf("Enter %d numbers\n", limit);  
+    while(limit)  
+    {  
+        scanf("%d", &num);  
+  
+        if(num > 0)  
+        {  
+            positive++;  
+        }  
+        else if(num < 0)  
+        {  
+            negative++;  
+        }  
+        else  
+        {  
+            zero++;  
+        }  
+  
+        limit--;  
+    }  
+  
+    printf("\nPositive Numbers: %d\n", positive);  
+    printf("Negative Numbers: %d\n", negative);  
+    printf("Number of zero: %d\n", zero);  
+   return 0;  
+}  
+
+8.Write a program to find the range of a set of numbers entered through the keyboard.
+Range is the difference between the smallest and biggest number in the list.
+input format: 'n' represents the total number of elements in the list followed by list of numbers in the list.
+Test Case example:
+--------------
+case=t1
+input=2
+15
+3
+output=12 is the range of the data
+
+case=t2
+input=2
+6
+5
+output=1 is the range of the data
+
+case=t3
+input=4
+6
+
+PROGRAM:
+----------
+#include<stdio.h>
+int main()
+{
+	int i,num,max,min, how, range;
+	
+	//printf("Enter how many number you want to enter : ");
+	scanf("%d", &how);
+	
+	//printf("Enter the number : ");
+	scanf("%d", &num);
+	
+	max=min=num;
+	
+	for( i = 1; i < how; i++)
+	{
+		//printf("Enter the number : ");
+		scanf("%d", &num);
+		if(num>max)
+			max=num;
+		if(num<min)
+			min=num;
+	}
+	range = max - min;
+	printf("%d is the range of the data.", range);
+	return 0;
+}
+
+9. Write a program to print 24 hours of day with suitable suffixes like AM, PM, Noon and Midnight.
+Test Cases:
+------------
+case=t1
+input=12
+output=1 AM
+2 AM
+3 AM
+4 AM
+5 AM
+6 AM
+7 AM
+8 AM
+9 AM
+10 AM
+11 AM
+12 Noon
+1 PM
+2 PM
+3 PM
+4 PM
+5 PM
+6 PM
+7 PM
+8 PM
+9 PM
+10 PM
+11 PM
+
+PROGRAM:
+-----------
+#include<stdio.h>
+int main()
+{
+    int h;
+    //for-loop for 24 hours
+    for(h=0;h<=23;h++)
+    {
+        if(h==0)
+        {
+            printf("12 Midnight\n");
+            continue;
+        }
+
+        if(h<12)
+        {
+            printf("%d AM\n",h);
+        }
+       if(h==12)
+        {
+            printf("%d Noon\n",h);
+        }
+
+
+        if(h>12)
+        {
+            //h=h%12;
+            printf("%d PM\n",h%12);
+        }
+
+    }
+}
+
+10. Write a C program for a matchstick game being played between the computer and a user. Your program should ensure that the computer always wins. Rules for the game are as follows: 
+  There are 21 matchsticks.
+– The computer asks the player to pick 1, 2, 3 or 4 matchsticks. (if user picks any other number apart from 4 print error message)
+– After the person picks, the computer does its picking.
+– Whoever is forced to pick up the last matchstick loses the game.
+
+Test Cases:
+---------------
+case=t1
+input=4
+7
+2
+5
+1
+3
+output=Number of matches left = 17
+out of which computer picked up 1
+enter the choice between 1 to 4
+Number of matches left = 14
+out of which computer picked up 3
+enter the choice between 1 to 4
+Number of matches left = 10
+out of which computer picked up 4
+Number of matches left = 3
+out of which computer picked up 2
+Number of matches left = 1
+You lost the Game
+
+case=t2
+input=4
+5
+3
+2
+1
+output=Number of matches left = 17
+out of which computer picked up 1
+enter the choice between 1 to 4
+Number of matches left = 13
+out of which computer picked up 2
+Number of matches left = 9
+out of which computer picked up 3
+Number of matches left = 5
+out of which computer picked up 4
+Number of matches left = 1
+You lost the Game
+
+PROGRAM:
+---------
+#include<stdio.h>  
+int main()  
+{  
+    int m = 21, p, c;  
+    while(1)  
+    {  
+        scanf("%d", &p);  
+        if(p > 4 || p < 1)  
+        {
+            printf("enter the choice between 1 to 4\n");
+            continue; 
+        }
+        m = m - p;  
+        printf("Number of matches left = %d\n", m);  
+          c = 5 - p; 
+ printf("out of which computer picked up %d\n", c);  
+        m = m - c;  
+        if(m == 1)  
+        {  
+            printf("\nNumber of matches left = %d\n", m);  
+            printf("You lost the Game\n");  
+          break;  
+        }  
+    }  
+    return 0;  
+}  
+ 
+11. Write a program to generate all Pythogorean Triplets with side length less than or equal to 30.
+Test Cases:
+-------------
+case=t1
+input=
+output=
+(3, 4, 5)
+(4, 3, 5)
+(5, 12, 13)
+(6, 8, 10)
+(7, 24, 25)
+(8, 6, 10)
+(8, 15, 17)
+(9, 12, 15)
+(10, 24, 26)
+(12, 5, 13)
+(12, 9, 15)
+(12, 16, 20)
+(15, 8, 17)
+(15, 20, 25)
+(16, 12, 20)
+(16, 30, 34)
+(18, 24, 30)
+(20, 15, 25)
+(20, 21, 29)
+(21, 20, 29)
+(21, 28, 35)
+(24, 7, 25)
+(24, 10, 26)
+(24, 18, 30)
+(28, 21, 35)
+(30, 16, 34)
+
+PROGRAM:
+-----------
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+    int a, b;
+    float c;
+
+    //calculate the another side using Pythagoras Theorem
+    //a*a + b*b = c*c
+    //c = sqrt(a*a+b*b)
+    //maximum length should be equal to 30
+    for(a=1;a<=30;a++)
+    {
+        for(b=1;b<=30;b++)
+        {
+            c = sqrt(a*a+b*b);
+            if(c == (int)c)
+            {
+                printf("(%d, %d, %d)\n",a,b,(int)c);
+            }
+        }
+    }
+}
+
+12.Population of a town today is 100000. The population has increased steadily at the rate of 10 % per year for last 10 years.
+Write a program to determine the population at the end of each year in the last decade.
+Test Cases:
+-----------
+case=t1
+input=
+output=
+1 year: 90000
+2 year: 81000
+3 year: 72900
+4 year: 65610
+5 year: 59049
+6 year: 53144
+7 year: 47829
+8 year: 43046
+9 year: 38742
+10 year: 34867
+
+PROGRAM:
+-----------
+#include<stdio.h>
+int main()
+{
+    int i;
+    float pop=100000;
+    //for-loop for 10 years
+    for(i=1;i<=10;i++)
+    {
+        pop = pop - pop*0.1; //10 % of population
+        printf("%d year: %d\n",i, (int)pop);
+    }
+}
+
+13.Write a  program to read a password until it is valid. 
+print "Correct password" and quit the program. The correct password is 1234.
+TESTCASES:
+----------
+case=t1
+input= 1234
+output=
+"Correct password"
+
+case=t2
+Expected exit code=0
+input= 1235
+output="Wrong password, try again"
+
+PROGRAM:
+-----------
+#include <stdio.h>
+#include<stdlib.h>
+int main() {
+	int pass;	
+
+	while (1)
+	{
+	//printf("\nInput the password: ");
+	scanf("%d",&pass);	
+	
+	if (pass==1234)
+	{
+		printf("Correct password!");
+		exit(0);
+    }
+    else
+    {
+       printf("Wrong password, try again"); 
+       exit(0);
+	}
+     printf("\n");
+     
+   }
+	return 0;
+} 
+
+14.In a numbering game few numbers are categorized as few specifications as mentioned below. Joy is trying to pick a number 
+and find out what kind of specification does the number belong to. Help Joy to identify the specification whenever he chooses
+a number. Here are the specifications.
+•	If n is odd, print Weird
+•	If n is even and in the inclusive range of 2 to 5, print Not Weird
+•	If n is even and in the inclusive range of 6 to 20, print Weird
+•	If n is even and greater than 20, print Not Weird
+
+
+Testcase example:
+-----------
+case=t1
+input=45
+output=Wierd
+
+case=t2
+input=72
+output=Not Wierd
+
+case=t3
+input=4 
+output=Not Wierd
+
+PROGRAM:
+----------
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    if(n%2==0)
+    {
+        if(n>=2 && n<=5)
+           printf("Not Wierd");
+        else if(n>=6 && n<=20)
+           printf("Wierd");  
+        else
+           printf("Not Wierd");
+    }
+    else
+        printf("Wierd"); 
+        
+        return(0);
+}
+
+15.A certain grade of steel is graded according to the following
+conditions:
+(i) Hardness must be greater than 50
+(ii) Carbon content must be less than 0.7
+(iii) Tensile strength must be greater than 5600
+The grades are as follows:
+Grade is 10 if all three conditions are met
+Grade is 9 if conditions (i) and (ii) are met
+Grade is 8 if conditions (ii) and (iii) are met
+Grade is 7 if conditions (i) and (iii) are met
+Grade is 6 if only one condition is met
+Grade is 5 if none of the conditions are met
+Write a program, which will require the user to give values of hardness, carbon content and tensile strength of the steel under
+consideration and output the grade of the steel.
+
+Testcase example:
+-------------
+case=t1
+input=50
+0.7
+5800 
+output=
+Grade is 8
+
+case=t2
+input=55
+0.5
+5800
+output=
+Grade is 10
+
+case=t3
+input=40
+0.5
+4800
+output=
+Grade is 6
+
+PROGRAM:
+------------
+#include<stdio.h>
+     int main()
+     {
+       int hard,tensile;
+       float carbon;
+       scanf("%d",&hard);
+       scanf("%f",&carbon);
+       scanf("%d",&tensile);
+       if(hard>50 && carbon<0.7 && tensile>5600)
+       printf("Grade is 10");
+       else if(hard>50 && carbon<0.7 && tensile<=5600)
+       printf("Grade is 9");
+       else if(hard<=50 && carbon<0.7 && tensile>5600)
+       printf("Grade is 8");
+       else if(hard>50 && carbon>=0.7 && tensile>5600)
+       printf("Grade is 7");
+       else 
+   if(hard>50 && carbon>=0.7 && tensile<=5600 || hard<=50 && carbon<0.7
+   && tensile<=5600 || hard<=50 && carbon>=0.7 && tensile>5600)
+      printf("Grade is 6");
+      else
+      printf("Grade is 5");
+      return 0;
+      }
+
+16. Write a program to find the grace marks for a student using switch.The user should enter the class obtained by the student and the
+number of subjects he has failed in. Use the following logic:
+
+If the student gets 1st class and the number of subjects he failed in is greater than 3, then print not eligible for grace marks. Otherwise print eligible for 5 grace marks per subject.
+If the student gets 2nd class and the number of subjects he failed in is greater than 2, then print not eligible for grace marks. Otherwise print eligible for 4 grace marks per subject.
+If the student gets 3rd class and the number of subjects he failed in is greater than 1, then print not eligible for grace marks. Otherwise print eligible for 3 grace marks per subject.
+
+Input format: student need to enter the class obtained (1 or 2 or 3) and number of subjects failed.
+If student enter any other choice apart the given classes print error message as "Wrong choice. Please enter valid class"
+
+Test case examples:
+----------
+case=t1
+input=2 2
+output=eligible for 4 grace marks per subject
+
+case=t1
+input=3 2
+output=not eligible for grace marks
+
+case=t3
+input=5 1
+output=Wrong choice. Please enter valid class
+
+case=t4
+input=3 1
+output=eligible for 3 grace marks per subject
+
+case=t5
+input=1 2
+output=eligible for 5 grace marks per subject
+
+PROGRAM:
+---------------
+#include<stdio.h>
+int main()
+{
+    int c,f;
+    scanf("%d %d",&c,&f);
+    switch(c)
+    {
+        case 1:if(f>3)
+        printf("not eligible for grace marks");
+        else
+        printf("eligible for 5 grace marks per subject");
+        break;
+        case 2:if(f>2)
+               printf("not eligible for grace marks");
+               else
+            printf("eligible for 4 grace marks per subject");
+            break;
+        case 3:if(f>1)
+               printf("not eligible for grace marks");
+        else
+               printf("eligible for 3 grace marks per subject");
+               break;
+        default:
+        printf("Wrong choice. Please enter valid class");
+        
+    }
+}
+
+17. If no prime factor divides a number more than once, it is said to be Square-Free; that is, the maximum power of a prime factor that divides n is one.
+1, 2, 3, 5, 6, 7, 11, 13, 14, 15, 17, 19 etc.. are some square-free numbers.
+Write a C program to print first 10 square free numbers.
+TESTCASES:
+---------
+CASE=T1
+input= 10
+output=1 2 3 5 6 7 10 11 13 14
+PROGRAM:
+------
+#include <stdio.h>
+#include <stdbool.h>
+#include<math.h>
+
+bool sqfree(int num)
+{
+    for (int i = 2; i <= sqrt(num); i++) 
+    {
+        if (num % (i * i) == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+int main() {
+    int count = 0;
+    int num = 1;
+
+
+    while (count < 10)
+    {
+        if (sqfree(num)) 
+        {
+            printf("%d ", num);
+            count++;
+        }
+        num++;
+    }
+
+    printf("\n");
+
+    return 0;
+}
+
+18. Some prime numbers can be expressed as a sum of other consecutive prime numbers. 
+For example: 
+5 = 2 + 3
+17 = 2 + 3 + 5 + 7
+ 
+Your task is to find out how many prime numbers which satisfy above property are present in the range 3 to N 
+subject to a constraint that summation should always start with number 2.
+
+Input Format: First line contains a number N
+Output Format: Print all such numbers separated by space.
+
+Test case example:
+-----------------
+case=t1
+input= 100
+output=5 17 41
+
+case=t2
+input=200
+output=5 17 41 197
+
+case=t3
+input=300
+output=5 17 41 197 281 
+PROGRAM:
+-----------
+#include <stdio.h>
+#include <stdbool.h>
+#include<math.h>
+bool isPrime(int num)
+{
+    if (num <= 1)
+    {
+        return false;
+    }
+
+    for(int i=2; i<=sqrt(num); i++) 
+    {
+        if (num%i == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+void consprime() 
+{
+    int limit;
+    scanf("%d",&limit);
+    for (int num = 2; num <= limit; num++) 
+    {
+        if (isPrime(num))
+        {
+            int sum = 2;
+            int current = 3;
+
+            while (current < num) 
+            {
+                if (isPrime(current))
+                {
+                    sum += current;
+                    if (sum == num)
+                    {
+                        printf("%d ", num);
+                        break;
+                    }
+                }
+                current += 2;
+            }
+        }
+    }
+}
+
+int main()
+{
+    consprime();
+    return 0;
+}
+
+19.Write a program to produce the following output:
+A B C D E F G F E D C B A
+A B C D E F   F E D C B A
+A B C D E       E D C B A
+A B C D           D C B A
+A B C               C B A
+A B                   B A
+A                       A
+Testcase example:
+---------------
+case=t1
+input=5
+output=
+A B C D E D C B A 
+A B C D   D C B A 
+A B C       C B A 
+A B           B A 
+A               A 
+
+
+case=t2
+input=7
+output=
+A B C D E F G F E D C B A 
+A B C D E F   F E D C B A 
+A B C D E       E D C B A 
+A B C D           D C B A 
+A B C               C B A 
+A B                   B A 
+A                       A 
+
+
+case=t3
+input=10
+output=
+A B C D E F G H I J I H G F E D C B A 
+A B C D E F G H I   I H G F E D C B A 
+A B C D E F G H       H G F E D C B A 
+A B C D E F G           G F E D C B A 
+A B C D E F               F E D C B A 
+A B C D E                   E D C B A 
+A B C D                       D C B A 
+A B C                           C B A 
+A B                               B A 
+A                                   A 
+
+
+
+
+PROGRAM:
+--------
+#include<stdio.h>
+int main()
+{
+    int i,j,k;
+    int n;
+    scanf("%d",&n);
+    for(i=n;i>=1;i--)
+    {
+    for(j=1;j<=n;j++)
+    {
+        if(j<=i)
+        printf("%c ",'A' + j-1);
+        else
+        printf("  ");
+    }
+    for(j=n-1;j>=1;j--)
+    {
+        if(j<=i)
+        printf("%c ",'A' + j-1);
+        else
+        printf("  ");
+    } 
+     printf("\n");
+	}
+}
 
