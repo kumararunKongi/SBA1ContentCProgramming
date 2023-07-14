@@ -1,1 +1,105 @@
+1. Assume a hall with the capability of n seats and every occupied seat is represented with 1 and the empty seat with 0. 
+Rahul was asked to code the program to count the total number of occupied and empty seats.
+TESTCASES:
+---------
+case=t1
+input=
+100101001110
+output= Occupied=6 Empty=6
 
+case=t2
+Fail message= "Test case didn't match"
+input=0100101011
+output=Occupied=5 Empty=5
+
+PROGRAM:
+--------
+#include <stdio.h>
+int main() 
+{
+    char binaryNumber[100];
+    int zerosCount = 0;
+    int onesCount = 0;
+
+    scanf("%s", binaryNumber);
+
+   
+    for (int i = 0; binaryNumber[i] != '\0'; i++) 
+    {
+        if (binaryNumber[i] == '0')
+        {
+            zerosCount++;
+        } else if (binaryNumber[i] == '1')
+        {
+            onesCount++;
+        }
+    }
+
+    printf("Occupied=%d Empty=%d",onesCount,zerosCount);
+
+
+    return 0;
+}
+
+2.If an array arr contains n elements, then write a program to check if arr[ 0 ] = arr[ n-1 ], arr[ 1 ] = arr[ n - 2 ] and so on.
+TETCASES:
+------------
+case=t1
+input=6
+22
+32
+42
+52
+32
+22
+output=
+a[0] & a[5] are equal
+a[1] & a[4] are equal
+a[2] & a[3] are not equal
+
+case=t2
+input=4
+6
+8
+3
+2
+output=
+a[0] & a[3] are not equal
+a[1] & a[2] are not equal
+
+case=t3
+Fail message="test case didn't match"
+input=6
+1
+2
+3
+4
+5
+5
+output=a[0] & a[5] are not equal
+a[1] & a[4] are not equal
+a[2] & a[3] are not equal
+
+PROGRAM:
+----------
+# include<stdio.h>
+int main()
+{
+    int n,i,j;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0,j=n-1;i<j;i++,j--)
+    {
+        if(a[i]==a[j])
+            printf("a[%d] & a[%d] are equal\n",i,j);
+        else
+          printf("a[%d] & a[%d] are not equal\n",i,j);
+    }
+    return(0);
+}
+
+3.
