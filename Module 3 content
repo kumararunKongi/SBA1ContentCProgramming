@@ -102,4 +102,398 @@ int main()
     return(0);
 }
 
-3.
+3.In a class there are n no. of students.one day the sprts teacher measured height of all of them 
+and he wants to know the student with minimum height and Maximum height. Help the sports teacher 
+to find the minimum and maximum height student in the class.
+
+Test cases:
+---------
+case=t1
+input=9 
+85 109 125 115 129 102 113 117 112 
+output= Height of smallest student in class = 85 cms
+Height of Tallest student in class = 129 cms
+
+case=t2
+Fail message= "Test case didn't match"
+input=10
+105 125 130 109 141 118 119 116 121 114
+output=Height of smallest student in class = 105 cms
+Height of Tallest student in class = 141 cms
+
+PROGRAM:
+----------
+# include<stdio.h>
+int main()
+{
+    int n,i,min=200,max=0;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+        if(a[i]>max)
+             max=a[i];
+        if(a[i]<min)
+             min=a[i];
+    }
+    printf("Height of smallest student in class =%d cms\n",min);
+    printf("Height of Tallest student in class =%d cms",max);
+    return(0);
+}
+
+4. There are n houses built in a line, each of which contains some cash in it.
+A thief is going to steal the maximal cash of these houses,
+but he can't steal in two adjacent houses because the owner of the stolen houses will tell his two neighbours left and right side.
+Find the maximum stolen value?
+Input format:
+-----------------
+First an integer n, denoting how many houses are there.
+Then n space separated integers denoting the cash for the n houses.
+Output Format:
+An integer denoting the maximum value possible to steal. 
+
+Test case example:
+-------------
+case=t1
+input=6
+10 20 50 50 100 200
+output=270
+
+case=t2
+Fail message="test case didn't match"
+input=7
+0 2 1 5 3 6 1
+output=13
+
+PROGRAM:
+----------
+#include <stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n],evenSum=0,oddSum=0;
+    for(int i=0;i<n;i++)
+    {   scanf("%d",&a[i]);
+        if(i%2==0)
+          evenSum=evenSum+a[i];
+        else
+          oddSum=oddSum+a[i];
+        
+    }
+    if(evenSum>oddSum)
+       printf("%d",evenSum);
+    else
+      printf("%d",oddSum);
+      
+      return(0);
+}
+
+5.After a long time of covid outbreak, finally you are into your B. Tech first year,
+ your programming faculty wants you to introduce yourself to the class with your name, 
+ last five digits of your ID Number, Gender, Department/Branch, Phone Number as(111-222-3333), 
+ Intermediate C.G.P.A., As you are a C aspirant,
+ write a program which takes input and displays all the details asked by your faculty.
+TESTCASES:
+--------
+case=t1
+input= Shanmukh 
+190031483
+M
+CSE 
+7854136908
+9.80	
+output= Name = Shanmukh 
+ID Num = 31483
+Gender = M 
+Department = CSE
+Phone Number = 785-413-6908
+C.G.P.A = 9.80
+
+case=t2
+Fail message= "Test case didn't match"
+input=Siva 
+190031795 
+M
+CSE 
+7418529630
+9.5	
+
+output= Name = Siva
+ID Num = 31795
+Gender = M 
+Department = CSE
+Phone Number = 741-852-9630
+C.G.P.A = 9.50
+
+
+PROGRAM:
+-------------
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char name[30],id[15],gender[2],dept[10],phno[15],str[15];
+    float cgpa;
+    
+    scanf("%s",name);
+    scanf("%s",id);
+    scanf("%s",gender);
+    scanf("%s",dept);
+    scanf("%s%f",phno,&cgpa);
+    
+    printf(" Name = %s\n",name);
+    printf("ID Num = ");
+    for(int i=4;i<strlen(id);i++)
+    {
+        printf("%c",id[i]);
+    }
+    printf("\nGender = %s",gender);
+    printf("\nDepartment = %s",dept);
+    printf("\nPhone Number = ");
+    for(int i=0;i<strlen(phno);i++)
+    {
+        if(i>0 && i%3==0 && i<7)
+        {
+            printf("-");
+        }
+        printf("%c",phno[i]);
+    }
+    printf("\nC.G.P.A = %0.2f",cgpa);    
+}
+
+6. Write a  c program that converts a string like "07071990"  to an integer "07071990" 
+
+Test case example:
+-------------
+case=t1
+input=455656767
+output=455656767
+
+case=t2
+input=-4656
+output=-4656
+
+case=t3
+input=56567676
+output=56567676
+
+case=t4
+Fail message= "Test case didn't match"
+input=arunck
+output=0
+
+case=t5
+input=2147483647
+output=2147483647
+
+case=t6
+input=-2147483647
+output=-2147483647
+PROGRAM:
+------------------
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+
+int main() 
+{
+    char str[20];
+ 
+    fgets(str, sizeof(str), stdin);
+   
+
+    int number = atoi(str);
+
+    printf("%d", number);
+
+    return 0;
+}
+
+7. Write a program to delete all vowels from a sentence. Assume that
+the sentence is not more than 80 characters long. If its more than 80 then the program should
+convert first 80 characters and print.
+
+Test cases:
+-------------
+case=t1
+input=arunkongi
+output="Sentence after removing vowels:
+rnkng"
+
+case=t2
+Fail message="Test case didnt match"
+input=Apart from the sheer complexity of the content, the lines of the poems often appear to have no relationship to one another.
+output="Sentence after removing vowels:
+prt frm th shr cmplxty f th cntnt, th lns f th pms ftn pp"
+
+case=t3
+input=The earth is considered as one of the most beautiful planets in the universe. It is the only planet in our galaxy that has enough water to support life. Unfortunately our planet is suffering due to many problems which should be solved before it is too late. The major problems that are facing our world today are population, pollution and animal extinction. One of the problems facing our world is population. It began about ten thousand years ago when the humans settled and began farming. The farming provides more food for the people thus making the population grow. Now we are about 6 billion in population and in a few years we will be around 10 to 11 billion.
+output=Sentence after removing vowels:
+Th rth s cnsdrd s n f th mst btfl plnts n th nvrs. t
+PROGRAM:
+------------
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX_LENGTH 81
+int main() 
+{
+    char sentence[MAX_LENGTH];
+
+   // printf("Enter a sentence (up to 80 characters):\n");
+    fgets(sentence, MAX_LENGTH, stdin);
+
+    int length = strlen(sentence);
+
+    for (int i = 0; i < length; i++) 
+    {
+        char c = tolower(sentence[i]);
+
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') 
+        {
+            for (int j = i; j < length; j++) 
+            {
+                sentence[j] = sentence[j + 1];
+            }
+            
+            length--;
+            i--;
+        }
+    }
+
+    printf("Sentence after removing vowels:\n%s", sentence);
+    return 0;
+}
+
+8. Write a program that extracts part of the given string from the specified position. For example if the string is VIRAT KOHLI
+then from position 2, extracting 4 characters would return the string as "IRAT".
+
+
+CONDITIONS:
+1. If the position is greater than the string length, zero or less than zero then the program should display " Can not extract substring"
+2. If the number of characters to be extracted is zero or greater than the string length then the program should extract entire string from the specified position.
+3. String size is maximum 100 characters.
+4. Maximum execution time for the given question is 32 seconds. If your code exceeds that test case wont match.
+
+Input Format: Read a string with spaces 
+In the next line read the position from which the string to be extracted and number of characters to be extracted from given position.
+
+
+Test case example:
+------------------
+case=t1
+input=VIRAT KOHLI
+2 4
+Output=IRAT
+
+case=t2
+Fail message="test case didn't match"
+input=VIRAT KOHLI
+2 0
+Output=IRAT KOHLI
+
+case=t3
+input=arsenal gunners
+6 4
+output=al g
+
+case =t4
+Fail message="test case didn't match"
+input=virat kohli
+-5 -5
+output=Can not extract substring
+
+case=t5
+input=griet college c programming
+20 4
+output=gram
+
+case=t6
+input=arun
+2 10
+output=run
+
+case=t7
+input=arun kongi
+25 5
+output=Can not extract substring
+
+case=t8
+input=arun
+2 0
+output=run
+
+case=t9
+input=virat kohli
+2 3
+output=ira
+
+case=t10
+input=arun kongi
+1 1
+output=a
+
+case=t11
+input=The earth is considered as one of the most beautiful planets in the universe. It is the only planet in our galaxy that has enough water to support life.
+output=string length exceeds 100 chracters
+PROGRAM:
+---------------
+#include <stdio.h>
+#include <string.h>
+
+void substring(char str[], int pos, int num) 
+{
+    int length = strlen(str);
+
+   if (pos <= 0 || pos>length|| num < 0)
+    {
+        printf("Can not extract substring");
+        return;
+    }
+         pos--;
+    if (num > (length - pos))
+        num = length - pos;
+ 
+  
+    if (num == 0)
+        num = length - pos;
+        
+    char extracted[101];
+    int i, j = 0;
+    
+  for (i = pos; i < (pos+ num); i++)
+  {
+        extracted[j] = str[i];
+        j++;
+    }
+    extracted[j] = '\0';
+
+    printf("%s", extracted);
+}
+
+int main() 
+{
+    char str[1000];
+    int pos, num;
+
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+    int length=strlen(str);
+     
+     if(length>100)
+    {
+      printf("string length exceeds 100 chracters");
+      return 0;
+    }
+
+    scanf("%d", &pos);
+    scanf("%d", &num);
+
+    substring(str, pos, num);
+
+    return 0;
+}
+
+9. 
