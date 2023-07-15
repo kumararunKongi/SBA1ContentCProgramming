@@ -1,5 +1,6 @@
 1.Any year is entered through the keyboard, write a program to determine whether the year is leap or not. Use the logical operators && and ||.
 TESTCASES:
+------------------
 case=t1
 input=2014
 output=2014 is not a leap year
@@ -10,6 +11,7 @@ input=1900
 output=1900 is not a leap year
 
 PROGRAM:
+---------------------
 #include<stdio.h>  
   
 int main()  
@@ -33,6 +35,7 @@ int main()
 2.A Utopian tree sapling with a height of 1 inch is planted on day1. The tree grows 2 inches every day. 
 Find the height of the tree in centimeters on nth day. (HINT: 1 inch= 2.54 centimeters)
 TESTCASES:
+------------------
 case=t1
 input=5
 output= The height of the tree on 5th day = 22.86 cms
@@ -42,6 +45,7 @@ Input = 6
 Output= The height of the tree on 6th day = 27.94 cms
 
 PROGRAM:
+-------------------
 #include<stdio.h>
 int main()
 {
@@ -58,6 +62,7 @@ He started solving the problem at x hrs:x1 minutes and completed it at y hrs :y1
 (Give your answer in minutes).
 
 TESTCASES:
+-------------------
 Case=t1
 input=15 10
 16 05
@@ -69,6 +74,7 @@ input= 10 30
 output=He took 40 minutes to solve the problem.
 
 PROGRAM:
+--------------------
 #include <stdio.h>
 int main()
 {
@@ -83,6 +89,7 @@ int main()
 on second day she solves one more than first day count and so on. Find the number of problems she solves on the nth day. 
 If she takes x minutes to solve each problem, find the total hours she spent on problem solving.
 TESTCASES:
+----------------
 Input = 7 20            //7 is nth day and 20 is x minutes to solve each problem
 Output
 Total Problem solved=28
@@ -98,6 +105,7 @@ Total Problems solved= 78
  Total time spent on problem solving = 19.5 hours
 
 PROGRAM:
+------------------
 #include<stdio.h>
 int main()
 {
@@ -114,6 +122,7 @@ int main()
 If 5 paisa is charged to paint per square centimeter, Find the cost of painting in rupees.
 
 TESTCASES:
+------------------
 CASE=T1 
 Input= l=20, b=15, h=12
 Output= painting cost = 72.00 rupees
@@ -127,6 +136,7 @@ l=40, b=90, h=16
 Output= painting cost = 568.00 rupees
 
 PROGRAM:
+-----------------
 #include<stdio.h>
 int main()
 {
@@ -142,6 +152,7 @@ int main()
 In Nizampet, he pours 1 liter of milk to each of 36 households. Find the number of liters of milk left with him?
 (HINT: 1 gallon = 3.785 liters). Assume that Krishna has adequate amount of milk.
 TESTCASES:
+------------------
 Case =T1
 11
 Amount of milk left with him = 5.635 liters
@@ -155,6 +166,7 @@ Case =T3
 Amount of milk left with him = 9.42 liters
 
 PROGRAM:
+--------------------------
 #include<stdio.h>
 int main()
 {
@@ -172,6 +184,7 @@ Input format: read no of pens purchased followed by number of chocolates purchas
 output condition: Remove any trailing decimal zeros in the output.
 for example 65.0 should be truncated to 65 and 65.5 should be kept as it is.
 TESTCASES:
+----------------
 case=t1
 input=10 5
 output=Total bill= Rs.65
@@ -188,6 +201,7 @@ Output=Total bill= Rs.62.5
 Remaining change to be returned= Rs.37.5
 
 PROGRAM:
+------------------
 #include<stdio.h>
 int main()
 {
@@ -203,6 +217,7 @@ int main()
 8. The solubility of sugar in 1 litre of water at X degree temperature  is A grams. For unit rise in temperature, the solubility of sugar in water 
 increases by B grams.We can increase the temperature to at most 100 degrees. Find the maximum amount of sugar in grams that can be dissolved in 1 litre of water.
 TESTCASES:
+------------------
 case=t1
 input=35 120 2
 output= "Amount of sugar that dissolves in 1 litre of water = 250 grams"
@@ -216,6 +231,7 @@ input=40 115  3
 output="Amount of sugar that dissolves in 1 litre of water = 295 grams"
 
 PROGRAM:
+----------------
 #include<stdio.h>
 int main()
 {
@@ -231,6 +247,7 @@ If the tower is h feet in height, how far is the enemy from the base of the towe
 Hint: •	Convert angle to degrees in order to use inbuilt tan function available in math.h
 •	tan (𝜃) = (ℎ𝑒𝑖𝑔ℎ𝑡/𝑑𝑖𝑠𝑡𝑎𝑛𝑐𝑒)
 TESTCASES:
+-----------------
 case=t1
 input=40 45
 output= The enemy is at a distance of 53.6 feet.
@@ -240,6 +257,7 @@ input=60 30
 output= The enemy is at a distance of 17.3 feet.
 
 PROGRAM:
+------------------
 #include<stdio.h>  
 #include<math.h>    
 int main()  
@@ -257,6 +275,7 @@ int main()
 
 10.Add Two Numbers Without Using the Arithmetic operators
 TESTCASES:
+-----------
 case=t1
 input=4
 5
@@ -265,7 +284,9 @@ case=t2
 input=8
 5
 output=13
+
 PROGRAM:
+-------------
 #include<stdio.h>
 #include<stdlib.h>
 int main()
@@ -280,7 +301,9 @@ int main()
 11.There is infinite line of black and white balls in alternate positions as shown below.
 In 1st position there is a black ball and in 2nd position there is white ball and so on...
 Given a number print the color of the ball at that position.
+
 TESTCASES:
+-------------------
 case= t1
 input=10
 output=White Ball
@@ -298,6 +321,7 @@ input=28
 output=White Ball
 
 PROGRAM:
+-----------------
 #include<stdio.h>
 int main()
 {
@@ -326,6 +350,7 @@ The period and rate will be delimited by a single white space.
 Output Format: Your decision is either Bank A or Bank B.
 
 TESTCASES:
+-----------------
 case=t1
 50000
 10
@@ -340,6 +365,7 @@ output=
 Bank B
 
 PROGRAM:
+-----------------
 #include <stdio.h>
 #include <math.h>
 
