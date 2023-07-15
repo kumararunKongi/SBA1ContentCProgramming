@@ -496,4 +496,534 @@ int main()
     return 0;
 }
 
-9. 
+9. To uniquely identify a book a 10-digit ISBN (International Standard Book Number) is used. The rightmost digit is a checksum digit. This
+digit is determined from the other 9 digits using the condition that d1 + 2d2 + 3d3 + ... + 10d10 must be a multiple of 11 (where di
+denotes the ith digit from the right). The checksum digit d1 can be any value from 0 to 10: the ISBN convention is to use the value X to
+denote 10. Write a program that receives a 10-digit integer,computes the checksum, and reports whether the ISBN number is correct or not.
+
+Test cases:
+---------------
+case=t1
+input=007462542X
+output=
+Valid ISBN
+
+case=t2
+input=0112112425
+output=
+Invalid ISBN
+
+case=t3
+input=0545010225
+output=Valid ISBN
+
+case=t4
+Fail Message="ISBN not in given range"
+input=0545010225678
+output=invalid ISBN
+
+case=t5
+Fail Message="ISBN ends with X, this test case didn't match"
+input=043942089X
+output=Valid ISBN
+
+PROGRAM:
+----------------
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+    char isbn[11];
+    int i, sum = 0;
+    
+    //printf("Enter a 10-digit ISBN number: ");
+    scanf("%s", isbn);
+    int n=strlen(isbn);
+    if(n!=10)
+    {
+        printf("Invalid ISBN");
+        return 0;
+    }
+
+    for (i = 0; i < 9; i++)
+    {
+        sum += (isbn[i] - '0') * (i + 1);
+    }
+   // printf("%d",sum);
+   
+    int checksum = sum % 11;
+    int lastDigit = isbn[9] - '0';
+
+    if (checksum == lastDigit)
+    {
+        printf("Valid ISBN\n");
+    }
+    else if (checksum == 10 && isbn[9] == 'X')
+    {
+        printf("Valid ISBN");
+    }
+    else
+    {
+        printf("Invalid ISBN");
+    }
+
+    return 0;
+}
+
+10.A Credit Card number is usually a 16-digit number. A valid Credit Card number would satisfy a rule explained below with the help of a
+dummy Credit Card number—4567 1234 5678 9129. Start with the leftmost digit and multiply every other digit by 2.
+4 5 6 7 1 2 3 4 5 6 7 8 9 1 2 9
+8 12 2 6 10 14 18 4
+From above array, Then subtract 9 from any number larger than or equal to 10. 
+Thus we get:
+8 3 2 6 1 5 9 4
+Add above all to get 38.
+Add all the other digits in the original credit card number which you didn't multiply by 2 to get 42.
+Sum of 38 and 42 is 80. Since 80 is divisible by 10, the Credit Card number is valid.
+Write a program that receives a Credit Card number and checks using the above rule whether the Credit Card number is valid.
+Input Format: Read credit card number without spaces.
+
+Test cases:
+--------------
+case=t1
+input=4567123456789129
+output=
+Credit Card Number is valid
+
+case=t2
+input=4388576018402626
+output=
+Credit Card Number is  not valid
+
+case=t3
+input=4532357265711922
+output=Credit Card Number is valid
+
+case=t4
+Fail message="Test case didn't match"
+input=4111111111111111
+output=Credit Card Number is valid
+
+case=t5
+input=1234567812345678
+output=Credit Card Number is not valid.
+
+PROGRAM:
+--------------
+#include<stdio.h>
+int main()
+{
+char num[20];
+int i, sum = 0;
+
+scanf("%s", num);
+
+for (i = 0; i <= 15; i++)
+{
+   num[i] -= '0';  //char to i
+        if(i % 2==0)
+        {
+            num[i] *= 2;
+             if (num[i] >= 10)
+               num[i] -= 9;
+            sum = sum + num[i];	
+        	
+        }
+        else
+        {
+             sum = sum + num[i];
+        
+        }
+}
+if ((sum % 10)==0)
+	printf("\nCredit Card Number is valid.");
+else
+	printf("\nCredit Card Number is not valid.");
+return 0;
+}
+
+11.Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+first input requires size of matrix and user will provide matrice elements.
+For example, the square matrix arr is shown below:
+input=3
+1 2 3
+4 5 6
+9 8 9 
+output=Absolute difference of Left and Right diagonal is |15-17| = 2
+The left-to-right diagonal = 1 + 5 + 9 = 15. The right to left diagonal = 3 + 5 + 9 = 17. 
+Their absolute difference is |15-17| = 2
+TESTCASES:
+-------------
+case=t1
+input=3
+4 5 6
+12 14 20
+16 19 21
+output=Absolute difference of Left and Right diagonal is |39-36| = 3
+
+case=t2
+input= 4
+1 0 1 1
+0 1 1 0
+0 0 1 1
+1 0 0 1
+output= Absolute difference of Left and Right diagonal is |4-3| = 1 
+
+case=t3
+Fail message="test case didn't match"
+input=5
+1 3 4 5 12
+0 1 -23 -15 19
+12 16 25 37 91
+3 4 5 6 7
+15 29 51 39 6
+output=Absolute difference of Left and Right diagonal is |39-41| = 2
+
+PROGRAM:
+-------------
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+int main()
+{
+ int i,j,n;
+ int a[10][10], sumLR=0, sumRL=0;
+
+ scanf("%d", &n);
+ for(i=0;i< n;i++)
+ {
+  for(j=0;j< n;j++)
+  {
+   //printf("a[%d][%d]=",i,j);
+   scanf("%d", &a[i][j]);
+  }
+ }
+ for(i=0;i< n;i++)
+ {
+  for(j=0;j< n;j++)
+  {
+   
+   if(i==j)
+   {
+    sumLR = sumLR + a[i][j];
+
+   }
+   if(i+j==n-1)
+   {
+    sumRL = sumRL + a[i][j];
+
+   }
+  }
+ }
+ printf("Absolute difference of Left and Right diagonal is |%d - %d|  = %d\n",sumLR,sumRL, abs(sumLR-sumRL));
+ return 0;
+}
+
+12.Write a program to count the number of occurrences of any two vowels in succession in a line of text. 
+For example, in the following sentence:
+“Please read this application and give me gratuity”
+such occurrences are ea, ea, ui.
+
+Test case example:
+-----------------
+case=t1
+input=Please read this application and give me gratuity
+output=Vowels in succession are: ea ea io ui 
+Total number of vowels in successions are : 4
+
+case=t2
+input=arsenal gunner
+output=No vowels in succession
+Total number of vowels in successions are : 0
+
+case=t3
+Fail message="Hint: Input contains "aeiou as the sentence"
+input=this is aeiou
+output=Vowels in Succession are: ae io
+Total number of vowels in successions are : 2
+
+PROGRAM:
+---------
+#include<stdio.h>
+#define vowels str[i]=='a'||str[i]=='A'||str[i]=='e'||str[i]=='E'\
+||str[i]=='i'||str[i]=='I'||str[i]=='o'||str[i]== 'O' || str[i] == 'u' \
+|| str[i] == 'U'
+void vowel(char * str)
+{
+    int i,j=0, count = 0,flag=0;
+    char result[100];
+    for (i = 0; str[i] != '\0'; i++)
+    {
+        if (vowels)       
+        {
+            i++;
+        if (vowels)               
+           {
+               flag=1;
+                result[j++] = str[i - 1];
+                result[j++] = str[i];
+                result[j++] = ' ';
+            count++;
+    	   }
+        }
+    }
+     result[j-1] ='\0';
+    if(flag==0)
+    printf("No vowels in succession");
+    else
+    printf("Vowels in Succession are: %s",result);
+    printf("\nTotal number of vowels in successions are : %d\n", count);
+}
+int main()
+{
+	char str[100], tot_vow;
+    //printf("Enter the string : ");
+    scanf("%[^\n]",str);
+    vowel(str);
+
+return 0;
+}
+
+13.Write a C program to set the lower triangle of a given square matrix to zero.
+Constraints:nXn square matrix. maximum possible size of n is 10.
+if n value is greater than 10. then just exit the code with exit value as 5 without printing anything"
+
+TESTCASES:
+---------------
+case=t1
+input=3
+1 2 3
+4 5 6
+7 8 9
+output=
+   1    2    3 
+   0    5    6 
+   0    0    9 
+
+case=t2
+Expected exit code=5
+input=11
+
+case=t3
+input=4
+1 2 3 4
+3 6 3 1
+8 9 5 1
+6 7 9 3
+output=
+   1    2    3    4 
+   0    6    3    1 
+   0    0    5    1 
+   0    0    0    3 
+   
+case=t4
+Fail message="Regular Hidden Test Case"
+input=5
+1 2 3 4 5
+2 3 4 5 1
+3 4 5 1 2
+4 5 1 2 3
+5 1 2 3 4
+output=
+    1    2    3    4    5
+    0    3    4    5    1
+    0    0    5    1    2
+    0    0    0    2    3
+    0    0    0    0    4
+
+PROGRAM:
+-------------------
+#include <stdio.h>
+#include<stdlib.h>
+int main()
+   {
+  int arr1[10][10],i,j,n;
+  
+     scanf("%d", &n); 
+     
+       if (n > 10)
+    {
+        exit(5); 
+    }
+	
+       for(i=0;i<n;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+	           
+	           scanf("%d",&arr1[i][j]);
+            }
+        }  
+
+  // printf("\nSetting zero in lower triangular matrix\n");
+   for(i=0;i<n;i++)
+   {
+      for(j=0;j<n;j++)
+      {
+           if(i<=j)
+             printf(" %4d",arr1[i][j]);
+           else
+             printf(" %4d",0);
+      }
+       printf("\n");
+  }
+ 
+}
+
+14.Write a c program to print first n fibanacci words from 0 through n.
+for example:if n=5 then print the following:
+TESTCASES:
+------------
+case=t1
+input=8
+output=f(0) = a
+f(1) = b
+f(2) = ba
+f(3) = bab
+f(4) = babba
+f(5) = babbabab
+f(6) = babbababbabba
+f(7) = babbababbabbababbabab
+
+case=t2
+input=9
+output=f(0) = a
+f(1) = b
+f(2) = ba
+f(3) = bab
+f(4) = babba
+f(5) = babbabab
+f(6) = babbababbabba
+f(7) = babbababbabbababbabab
+f(8) = babbababbabbababbababbabbababbabba
+
+
+case=t3
+Fail message="test case didn't match!! this test case generates first 15 fibanacci words"
+input=15
+output=f(0) = a
+f(1) = b
+f(2) = ba
+f(3) = bab
+f(4) = babba
+f(5) = babbabab
+f(6) = babbababbabba
+f(7) = babbababbabbababbabab
+f(8) = babbababbabbababbababbabbababbabba
+f(9) = babbababbabbababbababbabbababbabbababbababbabbababbabab
+f(10) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+f(11) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabab
+f(12) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+f(13) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabab
+f(14) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+
+
+case=t4
+Fail message="Max fibanacci word limit is 1000 characters"
+input=17
+output=f(0) = a
+f(1) = b
+f(2) = ba
+f(3) = bab
+f(4) = babba
+f(5) = babbabab
+f(6) = babbababbabba
+f(7) = babbababbabbababbabab
+f(8) = babbababbabbababbababbabbababbabba
+f(9) = babbababbabbababbababbabbababbabbababbababbabbababbabab
+f(10) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+f(11) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabab
+f(12) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+f(13) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabab
+f(14) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabba
+f(15) = babbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabbababbababbabbababbababbabbababbabbababbababbabbababbabab
+can not print more than the 1000 characters
+
+
+Constraints:The maximum number of fibanacci characters can be printed is 1000 characters.
+PROGRAM:
+--------------
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+char a[1000] = "a";
+char b[1000] = "b";
+char c[1000];
+int i;
+int n;
+scanf("%d",&n);
+for (i = 0; i<n; i++)
+{
+     if (strlen(a) > 1000)
+     {
+            printf("can not print more than the 1000 characters");
+            break;
+     }
+    
+	printf("f(%d) = %s\n",i,a);
+	strcpy(c, a);
+	strcpy(a, b);
+	strcat(b, c);
+}
+return 0;
+}
+
+15. The idea of Kadane's algorithm is, Given an array of integers, 
+the task is to find the maximum subarray sum possible of all the non-empty subarrays.
+Example:
+input=6
+-1 2 2 4 -3 -5
+output=maximum contigous subarray sum is 8
+Explanation: Subarray [2,2,4] is the maximum contiguous subarray with sum 8.
+Write a c program to implement the same.
+
+TESTCASES:
+-------------
+case=t1
+input=5
+2 -4 3 -1 2
+output=maximum contigous subarray sum is  4
+
+case=t1
+input=5
+1 2 100 -50 -100
+output=maximum contigous subarray sum is 103
+
+case=t3
+Fail message="Test case didn't match"
+input=8
+-3 -4 5 -1 2 -4 6 -1
+output=maximum contigous subarray sum is 8
+
+PROGRAM:
+--------------
+#include<stdio.h>
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+       int cursum=a[0];
+       int maxsum=a[0];
+       for(int i=1;i<n;i++)
+       {
+             if(a[i]>a[i]+cursum)
+              cursum=a[i];
+             else
+             cursum=a[i]+cursum;
+       
+       if(cursum > maxsum)
+       {
+           maxsum=cursum;
+       }
+        
+    }
+    printf("maximum contigous subarray sum is %d",maxsum);
+    return 0;
+}
+
